@@ -64,7 +64,7 @@ export class CreateComponent {
 
   importRecords(){
     this.assistanceList.forEach(item => {
-      this.assistaceService.createAssistance(item);
+      this.assistaceService.addAssistance(item);
     });
   }
 }
