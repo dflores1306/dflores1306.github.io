@@ -1,0 +1,32 @@
+<section class="py-8 sm:py-12 px-5 w-full h-full max-w-[1200px] m-auto md:text-center">
+  <h1 class="font-bold pb-3 xl:pb-10 text-blue-800 text-3xl sm:text-4xl xl:text-5xl">Asistencia :: Detalles</h1>
+  <form class="space-y-4 xl:space-y-8 text-lg xl:text-xl md:text-left ">
+    <div class="sm:flex sm:justify-between">
+      <div class="sm:w-[47%] mb-5">
+        <label for="UsuarioID" class="mb-2 block font-semibold w-[100%]">Usuario ID</label>
+        <input type="text" name="userId" readonly="readonly" disabled="disabled" value="{{ assistance.userId}}" class="rounded-md w-[100%] bg-gray-100">
+      </div>
+      <div class="sm:w-[47%] mb-5">
+        <label for="Nombre" class="mb-2 block font-semibold w-[100%]">Nombre</label>
+        <input type="text" name="userName" readonly="readonly" disabled="disabled" value="{{ assistance.userName }}" class="rounded-md w-[100%] bg-gray-100">
+      </div>
+    </div>
+    <div class="sm:flex sm:justify-between">
+      <div class="sm:w-[47%] mb-5">
+        <label for="UsuarioID" class="mb-2 block font-semibold w-[100%]">Fecha</label>
+        <input type="text" name="date" readonly="readonly" disabled="disabled" value="{{ assistance.date}}" class="rounded-md w-[100%] bg-gray-100">
+      </div>
+      <div class="sm:w-[47%] mb-5">
+        <label for="HoraEntrada" class="mb-2 block font-semibold w-[100%]">Hora de entrada</label>
+        <input type="text" name="punchIn" readonly="readonly" disabled="disabled" value="{{ assistance.punchIn }}" class="rounded-md w-[100%] bg-gray-100">
+      </div>
+    </div>
+    <div class="sm:w-[47%] w-[100%] mb-5">
+      <label for="HoraSalida" class="mb-2 block font-semibold w-[100%]">Hora de salida</label>
+      <input type="text" name="punchOut" readonly="readonly" disabled="disabled" value="{{ assistance.punchOut }}" class="rounded-md w-[100%] bg-gray-100">
+    </div>
+    <button type="button" [routerLink]="''"
+      class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4">Regresar</button>
+
+  </form>
+</section>

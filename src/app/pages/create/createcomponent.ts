@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Assistance } from 'src/app/models/assistance.model';
+import { Assistance, AssistanceNew } from 'src/app/models/assistance.model';
 import { AssistanceService } from 'src/app/services/assistance.service';
 
 import * as XLSX from 'xlsx';
@@ -13,14 +13,14 @@ type AOA = any[][];
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
-  assistance: Assistance = {
+  assistance: AssistanceNew = {
     userId: '',
     userName: '',
     date: '',
     punchIn: '',
     punchOut: ''
   }
-  assistanceList: Assistance[] = [];
+  assistanceList: AssistanceNew[] = [];
   data: any[][] = [ [1, 2], [3, 4] ];
   format = 'yyyy-MM-dd';
   formatTime = 'h:mm a';

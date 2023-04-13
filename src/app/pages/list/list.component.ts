@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Assistance } from 'src/app/models/assistance.model';
+import { Assistance, AssistanceNew } from 'src/app/models/assistance.model';
 import { AssistanceService } from 'src/app/services/assistance.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { AssistanceService } from 'src/app/services/assistance.service';
 })
 export class ListComponent implements OnInit{
   assistance: Assistance = {
+    id: '',
     userId: '',
     userName: '',
     date: '',

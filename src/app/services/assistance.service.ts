@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { retry, catchError, map } from 'rxjs/operators';
 
-import { Assistance } from 'src/app/models/assistance.model';
+import { Assistance, AssistanceNew } from 'src/app/models/assistance.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import { Assistance } from 'src/app/models/assistance.model';
 export class AssistanceService {
   assistanceList: Assistance[] = [];
   assistance: Assistance = {
+    id: '1',
     userId: '0001',
     userName: 'AAA',
     date: '2022-01-01',
@@ -16,6 +17,7 @@ export class AssistanceService {
     punchOut: '6:00 PM'
   }
   assistance2: Assistance = {
+    id: '2',
     userId: '0002',
     userName: 'AABA',
     date: '2022-01-03',
@@ -25,7 +27,7 @@ export class AssistanceService {
   constructor() {
   }
 
-  addAssistance(assistance: Assistance){
+  addAssistance(assistance: AssistanceNew){
     console.log("create assistance works: ",assistance);
   }
   updateAssistance(assistance: Assistance){
@@ -35,9 +37,13 @@ export class AssistanceService {
     console.log("delete assistance works: ",assistance);
   }
   getAssistanceList(){
+    this.assistanceList = [];
     this.assistanceList.push(this.assistance);
     this.assistanceList.push(this.assistance2);
     return this.assistanceList;
+  }
+  getAssistanceItem(id: string){
+    return this.assistance;
   }
 
 
