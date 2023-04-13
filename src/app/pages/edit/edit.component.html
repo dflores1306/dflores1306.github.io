@@ -1,0 +1,54 @@
+<section class="py-8 sm:py-12 px-5 w-full h-full max-w-[1200px] m-auto md:text-center">
+  <h1 class="font-bold pb-3 xl:pb-10 text-blue-800 text-3xl sm:text-4xl xl:text-5xl">Asistencia :: Editar</h1>
+  <form (ngSubmit)="onUpdate()" #updateForm="ngForm" class="space-y-4 xl:space-y-8 text-lg xl:text-xl md:text-left " >
+    <div class="sm:flex sm:justify-between">
+      <div class="sm:w-[47%] mb-5">
+        <label for="UsuarioID" class="mb-2 block font-semibold w-[100%]">Usuario ID</label>
+        <input required type="text" name="userId" #formUserId="ngModel" [(ngModel)]="assistance.userId" class="rounded-md w-[100%]" [ngClass]="{
+          'border-red-600 focus:border-red-600 focus:ring-red-600': formUserId.invalid
+        }">
+      </div>
+      <div class="sm:w-[47%] mb-5">
+        <label for="Nombre" class="mb-2 block font-semibold w-[100%]">Nombre</label>
+        <input required type="text" name="userName" #formUserName="ngModel" [(ngModel)]="assistance.userName" class="rounded-md w-[100%]" [ngClass]="{
+          'border-red-600 focus:border-red-600 focus:ring-red-600': formUserName.invalid
+        }">
+      </div>
+    </div>
+    <div class="sm:flex sm:justify-between">
+      <div class="sm:w-[47%] mb-5">
+        <label for="UsuarioID" class="mb-2 block font-semibold w-[100%]">Fecha</label>
+        <input required type="date" name="date" #formDate="ngModel" [(ngModel)]="assistance.date" class="rounded-md w-[100%]" [ngClass]="{
+          'border-red-600 focus:border-red-600 focus:ring-red-600': formDate.invalid
+        }">
+      </div>
+      <div class="sm:w-[47%] mb-5">
+        <label for="HoraEntrada" class="mb-2 block font-semibold w-[100%]">Hora de entrada</label>
+        <input required type="text" name="punchIn" #formPunchIn="ngModel" [(ngModel)]="assistance.punchIn" class="rounded-md w-[100%]" [ngClass]="{
+          'border-red-600 focus:border-red-600 focus:ring-red-600': formPunchIn.invalid
+        }">
+      </div>
+    </div>
+    <div class="sm:w-[47%] w-[100%] mb-5">
+      <label for="HoraSalida" class="mb-2 block font-semibold w-[100%]">Hora de salida</label>
+      <input required type="text" name="punchOut" #formPunchOut="ngModel" [(ngModel)]="assistance.punchOut" class="rounded-md w-[100%]" [ngClass]="{
+          'border-red-600 focus:border-red-600 focus:ring-red-600': formPunchOut.invalid
+        }">
+    </div>
+    <div *ngIf="status=='200'" class="p-2 bg-green-600 text-white">
+      El registro fue actualizado correctamente
+    </div>
+    <div *ngIf="status=='201'" class="p-2 bg-red-500 text-white">
+      {{ msgError }}
+    </div>
+    <div class="flex">
+      <button type="button" [routerLink]="''"
+      class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4 mr-4">Regresar</button>
+      <button type="submit" [disabled]="updateForm.invalid" [ngClass]="{'bg-blue-300': updateForm.invalid}"
+      class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4">Guardar</button>
+    </div>
+
+
+  </form>
+</section>
+
