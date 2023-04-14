@@ -8,6 +8,8 @@ import { CreateComponent } from './pages/create/createcomponent';
 import { ListComponent } from './pages/list/list.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { ConfirmationDialogComponent } from './utils/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { EditComponent } from './pages/edit/edit.component';
     CreateComponent,
     ListComponent,
     DetailsComponent,
-    EditComponent
+    EditComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

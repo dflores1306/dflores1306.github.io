@@ -1,0 +1,12 @@
+
+<section class="bg-white p-4" >
+  <h2 class="text-black font-semibold text-xl mb-5">Eliminar Registro</h2>
+  <div class="text-black text-lg mb-2">
+      ¿Estás seguro de eliminar este registro?
+  </div>
+  <div mat-dialog-actions class="flex">
+    <button mat-button mat-dialog-close  class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4 mr-4">No</button>
+    <button mat-button mat-dialog-close cdkFocusInitial (click) ='onConfirm(data.id)' class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4">Sí</button>
+  </div>
+</section>
+

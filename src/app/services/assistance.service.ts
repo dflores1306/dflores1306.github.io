@@ -33,8 +33,8 @@ export class AssistanceService {
   updateAssistance(assistance: Assistance){
     console.log("update assistance works: ",assistance);
   }
-  deleteAssistance(assistance: Assistance){
-    console.log("delete assistance works: ",assistance);
+  deleteAssistance(id: string){
+    console.log("delete assistance works: ",id);
   }
   getAssistanceList(){
     this.assistanceList = [];
