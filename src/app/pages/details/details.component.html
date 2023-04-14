@@ -1,4 +1,5 @@
-<section class="py-8 sm:py-12 px-5 w-full h-full max-w-[1200px] m-auto md:text-center">
+<app-header></app-header>
+<section class="py-8 sm:py-12 px-5 w-full h-auto min-h-[500px] lg:min-h-[600px] max-w-[1200px] m-auto md:text-center">
   <h1 class="font-bold pb-3 xl:pb-10 text-blue-800 text-3xl sm:text-4xl xl:text-5xl">Asistencia :: Detalles</h1>
   <form class="space-y-4 xl:space-y-8 text-lg xl:text-xl md:text-left ">
     <div class="sm:flex sm:justify-between">
@@ -26,7 +27,8 @@
       <input type="text" name="punchOut" readonly="readonly" disabled="disabled" value="{{ assistance.punchOut }}" class="rounded-md w-[100%] bg-gray-100">
     </div>
     <button type="button" [routerLink]="''"
-      class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4">Regresar</button>
+      class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block mb-4">Regresar</button>
 
   </form>
 </section>
+<app-footer></app-footer>

@@ -1,4 +1,5 @@
-<section class="py-8 sm:py-12 px-5 w-full h-full max-w-[1200px] m-auto md:text-center">
+<app-header></app-header>
+<section class="py-8 sm:py-12 px-5 w-full h-auto min-h-[500px] lg:min-h-[600px] max-w-[1200px] m-auto md:text-center">
   <h1 class="font-bold pb-3 xl:pb-10 text-blue-800 text-3xl sm:text-4xl xl:text-5xl">Asistencia :: Editar</h1>
   <form (ngSubmit)="onUpdate()" #updateForm="ngForm" class="space-y-4 xl:space-y-8 text-lg xl:text-xl md:text-left " >
     <div class="sm:flex sm:justify-between">
@@ -43,12 +44,13 @@
     </div>
     <div class="flex">
       <button type="button" [routerLink]="''"
-      class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4 mr-4">Regresar</button>
+      class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block mb-4 mr-4">Regresar</button>
       <button type="submit" [disabled]="updateForm.invalid" [ngClass]="{'bg-blue-300': updateForm.invalid}"
-      class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4">Guardar</button>
+      class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block mb-4">Guardar</button>
     </div>
 
 
   </form>
 </section>
+<app-footer></app-footer>
 

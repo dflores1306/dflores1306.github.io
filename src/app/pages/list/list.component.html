@@ -1,7 +1,8 @@
-<section class="py-8 sm:py-12 px-5 w-full h-full max-w-[1200px] m-auto md:text-center">
+<app-header></app-header>
+<section class="py-8 sm:py-12 px-5 w-full h-auto min-h-[500px] lg:min-h-[600px] max-w-[1200px] m-auto md:text-center">
   <h1 class="font-bold pb-3 xl:pb-6 text-blue-800 text-3xl sm:text-4xl xl:text-5xl">Historial de Asistencia</h1>
   <div class="md:text-left">
-    <button type="button" [routerLink]="'crear'" class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4">Importar registros</button>
+    <button type="button" [routerLink]="'crear'" class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block mb-4">Importar registros</button>
   </div>
 
   <div *ngIf="assistanceList.length > 0" class="max-w-[1200px] m-auto">
@@ -46,3 +47,4 @@
     </div>
   </div>
 </section>
+<app-footer></app-footer>

@@ -10,6 +10,8 @@ import { DetailsComponent } from './pages/details/details.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { ConfirmationDialogComponent } from './utils/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ListComponent,
     DetailsComponent,
     EditComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

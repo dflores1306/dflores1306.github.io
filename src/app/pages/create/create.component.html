@@ -1,13 +1,14 @@
-<section class="py-8 sm:py-12 px-5 w-full h-full max-w-[1200px] m-auto md:text-center">
+<app-header></app-header>
+<section class="py-8 sm:py-12 px-5 w-full max-w-[1200px] m-auto md:text-center h-auto min-h-[500px] lg:min-h-[600px]">
   <h1 class="font-bold pb-3 xl:pb-10 text-blue-800 text-3xl sm:text-4xl xl:text-5xl">Asistencia :: Crear registros</h1>
   <h2 class="font-semibold pb-3  xl:pb-12 text-xl xl:text-2xl">Cargue un archivo excel para guardar registros</h2>
   <form class="space-y-4 xl:space-y-8 text-lg xl:text-xl md:text-left ">
     <div class="max-w-[600px] m-auto">
-      <label for="Excel" class="mb-2 block font-semibold">Archivo Excel</label>
+      <label for="Excel" class="mb-2 block font-medium">Archivo Excel</label>
       <input type="file" name="excel" id="fileExcel" (change)="onChangeFile($event)" accept=".xlsx" multiple="false"
         class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding py-[0.32rem] px-3 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:rounded-md file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:border-0 file:border-solid file:border-inherit file:bg-blue-800 file:px-3 file:py-[0.32rem] file:text-white file:font-semibold file:transition file:duration-150 file:ease-in-out file:[margin-inline-end:0.75rem] file:[border-inline-end-width:1px] focus:border-primary focus:text-neutral-700 focus:shadow-[0_0_0_1px] focus:shadow-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100">
     </div>
-    <button type="button" [routerLink]="''" class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block mb-4 m-auto">Cancelar</button>
+    <button type="button" [routerLink]="''" class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block mb-4 m-auto">Cancelar</button>
     <p *ngIf="!isValidFile" class="text-red-600 md:text-center font-semibold" >Ingrese un archivo Excel válido</p>
     <div *ngIf="assistanceList.length > 0" class="max-w-[1200px] m-auto">
       <p class="mb-4 sm:mb-6 text-lg xl:text-xl">Registros encontrados</p>
@@ -33,8 +34,9 @@
           </tr>
         </table>
       </div>
-      <button *ngIf="assistanceList.length > 0" type="button" (click)="importRecords()" class="text-white bg-blue-800 rounded-md px-5 py-2 font-semibold md:block md:m-auto">Importar</button>
+      <button *ngIf="assistanceList.length > 0" type="button" (click)="importRecords()" class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block md:m-auto">Importar</button>
     </div>
 
   </form>
 </section>
+<app-footer></app-footer>
