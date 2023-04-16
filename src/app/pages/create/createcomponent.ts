@@ -26,6 +26,7 @@ export class CreateComponent {
   formatTime = 'h:mm a';
   locale = 'en-US';
   isValidFile: boolean = true;
+  counter:number = 0;
   constructor(private assistaceService: AssistanceService){
 
   }
@@ -63,11 +64,11 @@ export class CreateComponent {
   }
 
   importRecords(){
+    this.counter = 0;
     this.assistanceList.forEach(item => {
-      console.log(item);
       this.assistaceService.addAssistance(item)
       .subscribe( data => {
-        console.log(data);
+        this.counter++;
       });
     });
   }

@@ -43,6 +43,5 @@ export class EditComponent implements OnInit {
       this.updateResult = data;
     });
     this.status = '200';
-    console.log(this.status);
   }
 }
