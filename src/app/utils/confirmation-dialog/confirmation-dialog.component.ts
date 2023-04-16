@@ -14,8 +14,22 @@ export class ConfirmationDialogComponent {
      private assitanceService: AssistanceService,
      private router: Router){ }
 
+  result: any;
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
+
   onConfirm(id: string){
-    this.assitanceService.deleteAssistance(id);
-    this.router.navigate(['']);
+    this.assitanceService.deleteAssistance(id)
+    .subscribe( data => {
+      this.result = data;
+    });
+    console.log(this.result);
+    this.router.navigate([''])
+    .then(() => {
+      window.location.reload();
+    });
   }
 }

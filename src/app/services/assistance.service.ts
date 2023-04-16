@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpErrorResponse, HttpStatusCode, HttpHeaders } from '@angular/common/http';
 import { retry, catchError, map } from 'rxjs/operators';
 
 import { Assistance, AssistanceNew } from 'src/app/models/assistance.model';
@@ -7,43 +8,33 @@ import { Assistance, AssistanceNew } from 'src/app/models/assistance.model';
   providedIn: 'root'
 })
 export class AssistanceService {
+  private endPoint = '/api/v1/assistances';
   assistanceList: Assistance[] = [];
-  assistance: Assistance = {
-    id: '1',
-    userId: '0001',
-    userName: 'AAA',
-    date: '2022-01-01',
-    punchIn: '9:00 AM',
-    punchOut: '6:00 PM'
-  }
-  assistance2: Assistance = {
-    id: '2',
-    userId: '0002',
-    userName: 'AABA',
-    date: '2022-01-03',
-    punchIn: '9:00 AM',
-    punchOut: '6:00 PM'
-  }
-  constructor() {
+
+  constructor(private http: HttpClient) {
   }
 
   addAssistance(assistance: AssistanceNew){
-    console.log("create assistance works: ",assistance);
+    const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8', "Access-Control-Allow-Methods": "GET, POST OPTIONS"});
+    const options = { headers: headers };
+    return this.http.post<Assistance>(this.endPoint,assistance);
   }
-  updateAssistance(assistance: Assistance){
-    console.log("update assistance works: ",assistance);
+  updateAssistance(id: string, assistance: Assistance){
+    return this.http.patch(`${this.endPoint}/${id}`, assistance);
   }
   deleteAssistance(id: string){
-    console.log("delete assistance works: ",id);
+    return this.http.delete<boolean>(`${this.endPoint}/${id}`);
   }
   getAssistanceList(){
-    this.assistanceList = [];
-    this.assistanceList.push(this.assistance);
-    this.assistanceList.push(this.assistance2);
-    return this.assistanceList;
+    return this.http.get<Assistance[]>(this.endPoint);
+  }
+  getAssistanceByPage(limit: number, offset: number){
+    return this.http.get<Assistance[]>(this.endPoint, {
+      params: {limit, offset}
+    });
   }
   getAssistanceItem(id: string){
-    return this.assistance;
+    return this.http.get<Assistance>(`${this.endPoint}/${id}`);
   }
 
 

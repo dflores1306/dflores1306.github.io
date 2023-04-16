@@ -24,6 +24,9 @@ export class DetailsComponent implements OnInit{
         this.id = params['id'];
       }
     );
-    this.assistance = this.assistanceService.getAssistanceItem(this.id);
+    this.assistanceService.getAssistanceItem(this.id)
+    .subscribe( data => {
+      this.assistance = data;
+    });
   }
 }

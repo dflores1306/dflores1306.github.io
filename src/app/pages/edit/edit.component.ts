@@ -21,6 +21,7 @@ export class EditComponent implements OnInit {
   validForm: boolean = true;
   status: string = '';
   msgError: string = '';
+  updateResult: any;
 
   ngOnInit(){
     this.status = '';
@@ -30,12 +31,18 @@ export class EditComponent implements OnInit {
       }
     );
 
-    this.assistance = this.assistanceService.getAssistanceItem(this.id);
+    this.assistanceService.getAssistanceItem(this.id)
+    .subscribe( data => {
+      this.assistance = data;
+    });
   }
 
   onUpdate(){
-    this.assistanceService.updateAssistance(this.assistance);
+    this.assistanceService.updateAssistance(this.assistance.id, this.assistance)
+    .subscribe( data => {
+      this.updateResult = data;
+    });
     this.status = '200';
-
+    console.log(this.status);
   }
 }

@@ -22,7 +22,10 @@ export class ListComponent implements OnInit{
   constructor(private assistanceService: AssistanceService, public dialog: MatDialog){}
 
   ngOnInit(): void{
-    this.assistanceList = this.assistanceService.getAssistanceList();
+    this.assistanceService.getAssistanceByPage(10, 0)
+    .subscribe(data => {
+      this.assistanceList = data;
+    });
   }
 
   confirmDelete(enterAnimationDuration: string, exitAnimationDuration: string, id: string): void {
