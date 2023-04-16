@@ -15,8 +15,6 @@ export class AssistanceService {
   }
 
   addAssistance(assistance: AssistanceNew){
-    const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8', "Access-Control-Allow-Methods": "GET, POST OPTIONS"});
-    const options = { headers: headers };
     return this.http.post<Assistance>(this.endPoint,assistance);
   }
   updateAssistance(id: string, assistance: Assistance){
@@ -32,6 +30,19 @@ export class AssistanceService {
     return this.http.get<Assistance[]>(this.endPoint, {
       params: {limit, offset}
     });
+  }
+  getAssistanceFilter(filterName: string, minDate: string, maxDate: string){
+    let queryParams = new HttpParams();
+    if(filterName != ''){
+      queryParams.set('filterName', filterName);
+      return this.http.get<Assistance[]>(this.endPoint, {  params: {filterName} });
+    }
+    else if(minDate != '' && maxDate != ''){
+      return this.http.get<Assistance[]>(this.endPoint, {  params: {minDate, maxDate} });
+    } else {
+      return this.http.get<Assistance[]>(this.endPoint, {  params: {filterName, minDate, maxDate} });
+    }
+
   }
   getAssistanceItem(id: string){
     return this.http.get<Assistance>(`${this.endPoint}/${id}`);

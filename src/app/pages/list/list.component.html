@@ -1,8 +1,32 @@
 <app-header></app-header>
 <section class="py-8 sm:py-12 px-5 w-full h-auto min-h-[500px] lg:min-h-[600px] max-w-[1200px] m-auto md:text-center">
-  <h1 class="font-bold pb-3 xl:pb-6 text-blue-800 text-3xl sm:text-4xl xl:text-5xl">Historial de Asistencia</h1>
-  <div class="md:text-left">
-    <button type="button" [routerLink]="'crear'" class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block mb-4">Importar registros</button>
+  <h1 class="font-bold pb-5 xl:pb-10 text-blue-800 text-3xl sm:text-4xl xl:text-5xl">Historial de Asistencia</h1>
+  <div class="md:text-left md:flex md:items-end">
+    <form (ngSubmit)="onSearch()" #searchForm="ngForm" class="space-y-4 xl:space-y-8 text-lg xl:text-xl md:text-left md:mr-4" >
+      <div class="sm:flex sm:justify-between items-end">
+        <div class="sm:w-[25%] mb-5">
+          <label for="Nombre" class="mb-2 block font-semibold w-[100%]">Nombre</label>
+          <input type="text" name="userName" #formUserName="ngModel" [(ngModel)]="assistanceFilter.userName" class="rounded-md w-[100%]" [ngClass]="{
+            'border-red-600 focus:border-red-600 focus:ring-red-600': formUserName.invalid
+          }">
+        </div>
+        <div class="sm:w-[25%] mb-5">
+          <label for="UsuarioID" class="mb-2 block font-semibold w-[100%]">Fecha inicio</label>
+          <input type="date" name="minDate" #minDate="ngModel" [(ngModel)]="assistanceFilter.minDate" class="rounded-md w-[100%]" [ngClass]="{
+            'border-red-600 focus:border-red-600 focus:ring-red-600': minDate.invalid
+          }">
+        </div>
+        <div class="sm:w-[25%] mb-5">
+          <label for="UsuarioID" class="mb-2 block font-semibold w-[100%]">Fecha final</label>
+          <input type="date" name="maxDate" #maxDate="ngModel" [(ngModel)]="assistanceFilter.maxDate" class="rounded-md w-[100%]" [ngClass]="{
+            'border-red-600 focus:border-red-600 focus:ring-red-600': maxDate.invalid
+          }">
+        </div>
+        <button type="submit" [disabled]="searchForm.invalid" [ngClass]="{'bg-blue-300': searchForm.invalid}"
+        class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block mb-5">Buscar</button>
+      </div>
+    </form>
+    <button type="button" [routerLink]="'crear'" class="text-white bg-blue-800 rounded-md px-5 py-2 font-medium md:block mb-5 md:min-h-[44px]">Importar registros</button>
   </div>
 
   <div *ngIf="assistanceList.length > 0" class="max-w-[1200px] m-auto">
@@ -49,5 +73,6 @@
       </div>
     </div>
   </div>
+  <div *ngIf="assistanceList.length == 0" class="max-w-[1200px] m-auto text-lg font-medium md:text-xl">No se encontraron registros</div>
 </section>
 <app-footer></app-footer>

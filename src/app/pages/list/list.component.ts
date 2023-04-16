@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Assistance, AssistanceNew } from 'src/app/models/assistance.model';
+import { Assistance, AssistanceNew, AssistanceFilter } from 'src/app/models/assistance.model';
 import { AssistanceService } from 'src/app/services/assistance.service';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/utils/confirmation-dialog/confirmation-dialog.component';
@@ -16,7 +16,12 @@ export class ListComponent implements OnInit{
     date: '',
     punchIn: '',
     punchOut: ''
-  }
+  };
+  assistanceFilter: AssistanceFilter = {
+    userName: '',
+    minDate: '',
+    maxDate: ''
+  };
   assistanceList: Assistance[] = [];
   limit = 10;
   offset = 0;
@@ -47,6 +52,16 @@ export class ListComponent implements OnInit{
       this.assistanceList = this.assistanceList.concat(data);
 
     });
+  }
+
+  onSearch(){
+    if (this.assistanceFilter.userName != '' || (this.assistanceFilter.minDate != '' && this.assistanceFilter.maxDate != '')){
+      this.assistanceService.getAssistanceFilter(this.assistanceFilter.userName, this.assistanceFilter.minDate, this.assistanceFilter.maxDate)
+      .subscribe(data => {
+        this.assistanceList = data;
+      });
+    }
+
   }
 
 

@@ -13,3 +13,9 @@ export interface Assistance{
   punchIn: string;
   punchOut: string;
 }
+
+export interface AssistanceFilter{
+  userName: string;
+  minDate: string;
+  maxDate: string;
+}
