@@ -8,7 +8,7 @@ import { Assistance, AssistanceNew } from 'src/app/models/assistance.model';
   providedIn: 'root'
 })
 export class AssistanceService {
-  private endPoint = '/api/v1/assistances';
+  private endPoint = 'https://web-production-de461.up.railway.app/api/v1/assistances';
   assistanceList: Assistance[] = [];
 
   constructor(private http: HttpClient) {
