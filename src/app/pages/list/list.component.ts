@@ -18,11 +18,13 @@ export class ListComponent implements OnInit{
     punchOut: ''
   }
   assistanceList: Assistance[] = [];
+  limit = 10;
+  offset = 0;
 
   constructor(private assistanceService: AssistanceService, public dialog: MatDialog){}
 
   ngOnInit(): void{
-    this.assistanceService.getAssistanceByPage(10, 0)
+    this.assistanceService.getAssistanceByPage(this.limit, this.offset)
     .subscribe(data => {
       this.assistanceList = data;
     });
@@ -36,6 +38,15 @@ export class ListComponent implements OnInit{
       exitAnimationDuration,
     });
 
+  }
+
+  loadMore(){
+    this.offset += this.limit;
+    this.assistanceService.getAssistanceByPage(this.limit, this.offset)
+    .subscribe(data => {
+      this.assistanceList = this.assistanceList.concat(data);
+
+    });
   }
 
 
